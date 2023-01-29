@@ -1,3 +1,9 @@
+using HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices;
+using HahnSoftwareentwicklung.TechnicalSkills.API.Queries;
+using HahnSoftwareentwicklung.TechnicalSkills.Domain.Repositories;
+using HahnSoftwareentwicklung.TechnicalSkills.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TechnicalSkills"));
+});
+builder.Services.AddScoped<PersonRepository, InfrastructurePersonRepository>();
+builder.Services.AddScoped<PersonQueries>();
+builder.Services.AddScoped<APIServices>();
 
 var app = builder.Build();
 
