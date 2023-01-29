@@ -24,6 +24,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
                 PersonId.create(createPerson.personId));
 
             person.SetName(PersonName.Create(createPerson.Name));
+            person.SetPhone(PersonPhone.Create(createPerson.Phone));
             
             await repository.AddPerson(person);
         }

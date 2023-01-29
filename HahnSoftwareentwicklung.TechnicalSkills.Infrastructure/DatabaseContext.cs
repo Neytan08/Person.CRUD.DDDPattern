@@ -21,7 +21,13 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
             //Map the entitie Name with the column Name in the database
             modelBuilder.Entity<Person>().OwnsOne(o => o.Name, conf =>
             {
-                conf.Property(x => x.Value).HasColumnName("Name");
+                conf.Property(x => x.Value).HasColumnName("PersonName");
+            });
+
+            //Map the entitie Phone with the column Name in the database
+            modelBuilder.Entity<Person>().OwnsOne(o => o.Phone, conf =>
+            {
+                conf.Property(x => x.Value).HasColumnName("PersonPhone");
             });
 
             base.OnModelCreating(modelBuilder);
