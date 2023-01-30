@@ -15,6 +15,8 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities
         //It is a property from Person
         public PersonName Name { get; private set; }
         public PersonPhone Phone { get; private set; }
+        public PersonAddress Address { get; private set; }
+        public PersonMaritalStatus MaritalStatus { get; private set; }
 
         public Person(Guid id) 
         { 
@@ -29,6 +31,16 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities
         public void SetPhone(PersonPhone phone)
         {
             Phone = phone;
+        }
+
+        public void SetAddress(PersonAddress address)
+        {
+            Address = address;
+        }
+
+        public void SetMaritalStatus(PersonMaritalStatus status)
+        {
+            MaritalStatus = status;
         }
     }
 }

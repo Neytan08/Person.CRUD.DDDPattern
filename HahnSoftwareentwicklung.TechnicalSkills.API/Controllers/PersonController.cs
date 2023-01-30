@@ -30,5 +30,12 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
             var response = await apiServices.GetPerson(id);
             return Ok(response);
         }
+
+        [HttpGet]
+        public async Task<IActionResult>GetAllPersons()
+        {
+            var response = await apiServices.GetAllPerson();
+            return Ok(response);
+        }
     }
 }

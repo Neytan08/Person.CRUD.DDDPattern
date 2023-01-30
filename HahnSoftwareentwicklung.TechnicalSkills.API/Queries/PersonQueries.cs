@@ -19,5 +19,11 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Queries
                 PersonId.create(id));
             return respose;
         }
+
+        public async Task<Person> GetAllPerson()
+        {
+            var respose = await personRepository.GetAllPerson();
+            return respose;
+        }
     }
 }

@@ -30,6 +30,18 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
                 conf.Property(x => x.Value).HasColumnName("PersonPhone");
             });
 
+            //Map the entitie Addres with the column Name in the database
+            modelBuilder.Entity<Person>().OwnsOne(o => o.Address, conf =>
+            {
+                conf.Property(x => x.Value).HasColumnName("PersonAddress");
+            });
+
+            //Map the entitie Addres with the column Name in the database
+            modelBuilder.Entity<Person>().OwnsOne(o => o.MaritalStatus, conf =>
+            {
+                conf.Property(x => x.Value).HasColumnName("MaritalStatus");
+            });
+
             base.OnModelCreating(modelBuilder);
         }
 

@@ -25,6 +25,8 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
 
             person.SetName(PersonName.Create(createPerson.Name));
             person.SetPhone(PersonPhone.Create(createPerson.Phone));
+            person.SetAddress(PersonAddress.Create(createPerson.Address));
+            person.SetMaritalStatus(PersonMaritalStatus.Create(createPerson.MaritalStatus));
             
             await repository.AddPerson(person);
         }
@@ -32,6 +34,11 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
         public async Task<Person> GetPerson(Guid id)
         {
             return await personQueries.GetPersonIdAsync(id);
+        }
+
+        public async Task<Person> GetAllPerson()
+        {
+            return await personQueries.GetAllPerson();
         }
 
     }
