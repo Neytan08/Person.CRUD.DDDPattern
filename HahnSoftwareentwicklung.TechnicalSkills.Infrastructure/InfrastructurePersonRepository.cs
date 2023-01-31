@@ -13,10 +13,12 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
     public class InfrastructurePersonRepository : PersonRepository
     {
         DatabaseContext db;
+        private readonly IList<Person> _persons;
 
         public InfrastructurePersonRepository(DatabaseContext db_)
         {
-            this.db = db_;
+            db = db_;
+            _persons= new List<Person>();
         }
 
         public async Task AddPerson(Person person)
@@ -25,9 +27,9 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
             await db.SaveChangesAsync();
         }
 
-        public Task<Person> GetAllPerson()
+        public async Task<List<Person>> GetAllPerson()
         {
-            throw new NotImplementedException();
+            return await db.Persons.ToListAsync();
         }
 
         public async Task<Person> GetPersonById(PersonId Id)
@@ -35,16 +37,5 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
             //Make the conversion of personId to Guid
             return await db.Persons.FindAsync((Guid)Id);
         }
-        /*
-        public async Task<List<Person>> PersonRepository.GetAllPerson()
-        {
-            var records = db.Persons.Select(x => new Person()
-            {
-                Id = x.Id,
-
-            });
-
-            return records;
-        }*/
     }
 }

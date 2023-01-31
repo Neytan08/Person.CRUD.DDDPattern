@@ -15,7 +15,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.Repositories
 
         Task AddPerson(Person person);
 
-        Task<Person> GetAllPerson();
+        Task<List<Person>> GetAllPerson();
 
     }
 }

@@ -9,7 +9,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
     //Is a record because this object is unalterable and depends from de value
     public record PersonId
     {
-        public Guid value { get; set; } 
+        public Guid value { get; init; } 
 
         //Constructor
         internal PersonId(Guid value_) 

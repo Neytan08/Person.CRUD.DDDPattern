@@ -20,7 +20,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Queries
             return respose;
         }
 
-        public async Task<Person> GetAllPerson()
+        public async Task<List<Person>> GetAllPerson()
         {
             var respose = await personRepository.GetAllPerson();
             return respose;

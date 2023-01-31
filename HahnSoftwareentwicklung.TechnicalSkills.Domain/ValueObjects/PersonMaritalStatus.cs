@@ -8,7 +8,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
 {
     public  record PersonMaritalStatus
     {
-        public string Value { get; set; }
+        public string Value { get; init; }
 
         internal PersonMaritalStatus(string value)
         {

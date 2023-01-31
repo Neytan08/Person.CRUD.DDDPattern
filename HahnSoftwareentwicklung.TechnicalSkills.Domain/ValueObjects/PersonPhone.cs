@@ -8,7 +8,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
 {
     public record class PersonPhone
     {
-        public int Value { get; set; }
+        public int Value { get; init; }
 
         internal PersonPhone(int value)
         {

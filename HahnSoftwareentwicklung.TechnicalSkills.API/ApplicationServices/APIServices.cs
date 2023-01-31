@@ -3,6 +3,7 @@ using HahnSoftwareentwicklung.TechnicalSkills.API.Queries;
 using HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities;
 using HahnSoftwareentwicklung.TechnicalSkills.Domain.Repositories;
 using HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects;
+using System.Collections;
 
 namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
 {
@@ -18,11 +19,9 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
             this.personQueries = personQueries;
         }
 
-        public async Task HandlerCommand(CreatePersonCommand createPerson)
+        public async Task HandleCommand(CreatePersonCommand createPerson)
         {
-            var person = new Person(
-                PersonId.create(createPerson.personId));
-
+            var person = new Person(PersonId.create(createPerson.personId));
             person.SetName(PersonName.Create(createPerson.Name));
             person.SetPhone(PersonPhone.Create(createPerson.Phone));
             person.SetAddress(PersonAddress.Create(createPerson.Address));
@@ -36,9 +35,9 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
             return await personQueries.GetPersonIdAsync(id);
         }
 
-        public async Task<Person> GetAllPerson()
+        public async Task<List<Person>> GetAllPerson()
         {
-            return await personQueries.GetAllPerson();
+           return await personQueries.GetAllPerson();
         }
 
     }

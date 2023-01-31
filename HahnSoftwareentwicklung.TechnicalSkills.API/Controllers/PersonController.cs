@@ -1,7 +1,10 @@
 ﻿using HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices;
 using HahnSoftwareentwicklung.TechnicalSkills.API.Commands;
+using HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
 {
@@ -20,7 +23,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
         public async Task<IActionResult>AddPerson(
             CreatePersonCommand createPersonCommand)
         {
-            await apiServices.HandlerCommand(createPersonCommand);
+            await apiServices.HandleCommand(createPersonCommand);
             return Ok(createPersonCommand);
         }
 
@@ -32,10 +35,11 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult>GetAllPersons()
+        public async Task<IActionResult> GetAllPerson()
         {
-            var response = await apiServices.GetAllPerson();
-            return Ok(response);
+            List<Person> persons = await apiServices.GetAllPerson();
+
+            return Ok(persons);
         }
     }
 }
