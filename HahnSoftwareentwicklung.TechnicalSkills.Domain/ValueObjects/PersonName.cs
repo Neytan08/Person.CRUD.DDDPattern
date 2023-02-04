@@ -22,6 +22,12 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
             validate(value);
             return new PersonName(value);
         }
+        /*
+        public static PersonName Select(string value)
+        {
+            validate(value);
+            return PersonName(value);
+        }*/
 
         private static void validate(string value)
         {

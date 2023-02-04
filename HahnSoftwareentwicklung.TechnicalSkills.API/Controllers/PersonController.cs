@@ -20,10 +20,9 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>AddPerson(
-            CreatePersonCommand createPersonCommand)
+        public async Task<IActionResult>AddPerson(CreatePersonCommand createPersonCommand)
         {
-            await apiServices.HandleCommand(createPersonCommand);
+            await apiServices.HandleCommandCreate(createPersonCommand);
             return Ok(createPersonCommand);
         }
 
@@ -40,6 +39,34 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
             List<Person> persons = await apiServices.GetAllPerson();
 
             return Ok(persons);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePerson(Guid id)
+        {            
+            await apiServices.DeletePerson(id);
+            
+            return Ok(id);
+        }
+        /*
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePerson(Guid id, Person person)
+        {
+            var personToUpdate = await apiServices.GetPerson(id);
+
+            if (personToUpdate != null)
+            {
+                await apiServices.UpdatePerson(person);
+                return Ok(person);
+            }
+            return null;
+        }*/
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePerson(Guid id, UpdatePersonCommand updatePerson)
+        {
+            await apiServices.UpdatePerson(id, updatePerson);
+            return Ok(updatePerson);
         }
     }
 }

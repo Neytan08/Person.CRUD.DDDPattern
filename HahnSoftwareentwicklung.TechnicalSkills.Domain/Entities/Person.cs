@@ -23,6 +23,10 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities
             this.Id = id;
         }
 
+        public Person()
+        {
+        }
+
         public void SetName(PersonName name)
         {
             Name = name;

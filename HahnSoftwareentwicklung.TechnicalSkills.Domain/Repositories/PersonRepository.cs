@@ -17,5 +17,9 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.Repositories
 
         Task<List<Person>> GetAllPerson();
 
+        Task<Person> DeletePersonIdAsync(PersonId Id);
+
+        Task UpdatePerson(PersonId id, Person person);
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,12 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
 
         //Create the value type PersonId
         public static PersonId create(Guid value)
+        {
+            return new PersonId(value);
+        }
+
+        //Select the value type PersonId
+        public static PersonId select(Guid value)
         {
             return new PersonId(value);
         }
