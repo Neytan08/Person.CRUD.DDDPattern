@@ -9,7 +9,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
     //Is a record because this object is unalterable and depends from de value
     public record PersonName
     {
-        public string Value { get; set; }
+        public string Value { get; init; }
 
         internal PersonName(string value) 
         {
@@ -22,6 +22,12 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
             validate(value);
             return new PersonName(value);
         }
+        /*
+        public static PersonName Select(string value)
+        {
+            validate(value);
+            return PersonName(value);
+        }*/
 
         private static void validate(string value)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
     //Is a record because this object is unalterable and depends from de value
     public record PersonId
     {
-        public Guid value { get; set; } 
+        public Guid value { get; init; } 
 
         //Constructor
         internal PersonId(Guid value_) 
@@ -19,6 +20,12 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Domain.ValueObjects
 
         //Create the value type PersonId
         public static PersonId create(Guid value)
+        {
+            return new PersonId(value);
+        }
+
+        //Select the value type PersonId
+        public static PersonId select(Guid value)
         {
             return new PersonId(value);
         }

@@ -5,7 +5,7 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
 {
     public class DatabaseContext:DbContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options):base (options) 
+        public DatabaseContext(DbContextOptions<DatabaseContext> options):base(options) 
         {
 
         }
@@ -28,6 +28,18 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
             modelBuilder.Entity<Person>().OwnsOne(o => o.Phone, conf =>
             {
                 conf.Property(x => x.Value).HasColumnName("PersonPhone");
+            });
+
+            //Map the entitie Addres with the column Name in the database
+            modelBuilder.Entity<Person>().OwnsOne(o => o.Address, conf =>
+            {
+                conf.Property(x => x.Value).HasColumnName("PersonAddress");
+            });
+
+            //Map the entitie Addres with the column Name in the database
+            modelBuilder.Entity<Person>().OwnsOne(o => o.MaritalStatus, conf =>
+            {
+                conf.Property(x => x.Value).HasColumnName("MaritalStatus");
             });
 
             base.OnModelCreating(modelBuilder);
