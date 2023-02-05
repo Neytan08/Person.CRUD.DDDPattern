@@ -1,13 +1,14 @@
 ﻿using HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices;
 using HahnSoftwareentwicklung.TechnicalSkills.API.Commands;
 using HahnSoftwareentwicklung.TechnicalSkills.Domain.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonController : ControllerBase
@@ -40,7 +41,6 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
 
             return Ok(persons);
         }
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(Guid id)
         {            
@@ -48,20 +48,6 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.Controllers
             
             return Ok(id);
         }
-        /*
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePerson(Guid id, Person person)
-        {
-            var personToUpdate = await apiServices.GetPerson(id);
-
-            if (personToUpdate != null)
-            {
-                await apiServices.UpdatePerson(person);
-                return Ok(person);
-            }
-            return null;
-        }*/
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePerson(Guid id, UpdatePersonCommand updatePerson)
         {

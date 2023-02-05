@@ -56,18 +56,5 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.API.ApplicationServices
 
             await personQueries.UpdatePerson(id, person);
         }
-
-        /*
-        public async Task<Person> HandleCommandUpdate(Person updatePerson)
-        {
-            var person = new Person();
-            person.SetName(PersonName.Create(updatePerson.Name.Value));
-            person.SetPhone(PersonPhone.Create(updatePerson.Phone.Value));
-            person.SetAddress(PersonAddress.Create(updatePerson.Address.Value));
-            person.SetMaritalStatus(PersonMaritalStatus.Create(updatePerson.MaritalStatus.Value));
-
-            return await personQueries.UpdatePerson(person);
-        }
-        */
     }
 }

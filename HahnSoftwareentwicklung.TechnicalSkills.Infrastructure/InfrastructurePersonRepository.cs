@@ -62,13 +62,5 @@ namespace HahnSoftwareentwicklung.TechnicalSkills.Infrastructure
             db.Persons.Update(result);
             await db.SaveChangesAsync();
         }
-        /*
-        public async Task UpdatePerson(PersonId id, Person person)
-        {
-
-            db.Update(person);
-            await db.SaveChangesAsync();
-        }
-        */
     }
 }
